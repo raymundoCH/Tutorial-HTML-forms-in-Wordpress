@@ -17,6 +17,21 @@ Then we must open the **myCustomPlugin** folder and add three different php file
 
 That's it! you just completed the first part 😃 !
 
+## Adding the header comment
+
+Wordpress requires that all plugins contain a comment section into the main php file so that Wordpress knows some basic details about the plugin being activated.
+
+Open the file **myCustomPlugin.php** and add the next comment at the top of the file:
+
+~~~
+<?php
+/*
+* Plugin Name: Testing HTML for submission
+* Description: This plugin generates an HTML form 
+* Author: YOUR-NAME-HERE
+*/
+~~~
+Now if you navigate to the Plugins section in the Dashboard you should be able to see the plugin listed; activate the plugin otherwise any change you make to the code won't take effect.
 
 
 
