@@ -15,7 +15,7 @@ Firstly we must create the Plugin folder; navigate to the Plugins folder and cre
 
 Then we must open the **myCustomPlugin** folder and add three different php files inside; those php files are **myCustomPlugin.php, customAdminPage.php and processingFormData.php**.
 
-That's it! you just completed the first part 😃 !
+That's it! you just completed the first part <img src="/1F604.svg" height="50" width="50"/> !
 
 ## Adding the header comment
 
