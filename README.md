@@ -33,5 +33,68 @@ Open the file **myCustomPlugin.php** and add the next comment at the top of the 
 ~~~
 Now if you navigate to the Plugins section in the Dashboard you should be able to see the plugin listed; activate the plugin otherwise any change you make to the code won't take effect.
 
+## Including the function add_menu_page
+
+Setting up a new **admin page** for the Dashboard is the first step; open the file **customAdminPage.php** and add the next php code snippet at the top of the file:
+~~~
+<?php
+
+if(!function_exists("add_menu_page")){
+
+	include(ABSPATH."wp-admin/includes/plugin.php");
+}
+
+//more php code will be added here...
+~~~
+The code above is used to check whether the function **admin_menu_page** is available for use; in case the function is not available then the source code is included.
+
+## Setting up the add_menu_page function
+
+The **add_menu_page** function is called to create a new **admin page** in the Dashboard; open the file **customAdminPage.php** and make the next modifications:
+
+~~~
+if(!function_exists("test_HTML_form")):
+
+	function test_HTML_form_markup(){
+		?>
+		<div class="wrap">
+      <!-- The HTML markup for the form will be here -->
+    </div>
+		<?php
+	}
+
+	function test_HTML_form(){
+
+		add_menu_page(
+			"Test HTML form plugin",
+			"Test HTML form",
+			"manage_options",
+			"test-form",
+			"test_HTML_form_markup",
+			"dashicons-store",
+			4
+		);
+
+	}
+
+	add_action("admin_menu","test_HTML_form");
+endif;
+~~~
+The **admin_menu** hook is used to configure admin pages for the Dashboard in this case; when the **admin_menu** hook is run then the function **test_HTML_form** is run.
+
+The function **test_HTML_form** is declared and then used as a parameter for the **add_action** function; note how the **add_menu_page** function is invoked inside the **test_HTML_form** function.
+
+The **add_menu_page** function requires the next parameters:
+
+1. **Test HTML form plugin** is the webpage title displayed in the web browser tab.
+2. **Test HTML form** is the text for the menu item.
+3. **manage_options** is the user permission necessary to see the admin page; this permission is granted only to admins.
+4. **test-form** is the slug of the admin page.
+5. **test_HTML_form_markup** is the name of the function which contains the HTML markup for the form.
+6. **dashicons-store** is the name of the icon for the menu item.
+7. The number **4** represents  the position of the menu item.
+
+The **test_HTML_form_markup** function contains a div with the class **wrap**; this HTML element is used by Wordpress and should be placed inside each admin page.
+
 
 
