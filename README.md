@@ -96,5 +96,28 @@ The **add_menu_page** function requires the next parameters:
 
 The **test_HTML_form_markup** function contains a div with the class **wrap**; this HTML element is used by Wordpress and should be placed inside each admin page.
 
+## Adding the necessary HTML markup
+
+Open the file **customAdminPage.php** and apply the next modifications:
+
+~~~
+function rch_submit_watch_menu_html(){
+		?>
+		<div class="wrap">
+			<form method="post">
+  				<label for="firstName">
+			          <input type="text" id="firstName" name="firstName"/>
+				</label><br/>
+				<label for="lastName">
+				   <input type="text" id="lastName" name="lastName"/>
+				</label><br/>
+				<input type="submit" value="Submit"/>
+			</form>
+		</div>
+	<?php
+	}
+~~~
+As you can see two different text fields were added; these text fields are used to enter the full name of the user; note how the **form tag** only has the **method attribute**; this configuration makes the webpage to be reloaded when the user hits the **Submit button**.
+
 
 
